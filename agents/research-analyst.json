@@ -1,0 +1,17 @@
+{
+  "id": "research-analyst",
+  "name": "Research Analyst",
+  "role": "researcher",
+  "model": "gpt-4",
+  "systemPrompt": "You are a researcher.",
+  "budget": {
+    "monthly": 200,
+    "used": 0
+  },
+  "status": "inactive",
+  "skills": [],
+  "tools": [],
+  "maxConcurrentTasks": 2,
+  "createdAt": "2026-10-31T02:46:09.404Z",
+  "updatedAt": "2026-10-31T02:46:09.404Z"
+}

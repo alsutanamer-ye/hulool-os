@@ -1,0 +1,24 @@
+{
+  "name": "my-first-company",
+  "version": "0.1.0",
+  "template": "default",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-4"
+  },
+  "budget": {
+    "monthly": 100,
+    "alertThreshold": 80
+  },
+  "agents": {
+    "directory": "./agents",
+    "autoStart": true
+  },
+  "workflows": {
+    "directory": "./workflows"
+  },
+  "logging": {
+    "level": "info",
+    "directory": "./logs"
+  }
+}

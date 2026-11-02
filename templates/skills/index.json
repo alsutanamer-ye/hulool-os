@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "type": "skill",
+  "templates": [
+    {
+      "id": "skill-code-review",
+      "name": "Code Review",
+      "type": "skill",
+      "description": "Comprehensive code review skill covering security, performance, and best practices",
+      "tags": [
+        "code",
+        "review",
+        "security",
+        "performance"
+      ],
+      "config": {
+        "capabilities": [
+          "security-analysis",
+          "performance-optimization",
+          "best-practices-check",
+          "code-quality-assessment"
+        ]
+      },
+      "dependencies": [],
+      "metadata": {
+        "createdAt": "2026-11-03T00:00:00Z",
+        "updatedAt": "2026-11-03T00:00:00Z",
+        "version": "1.0.0",
+        "author": "hulool-team",
+        "license": "MIT",
+        "downloads": 0
+      }
+    }
+  ],
+  "lastUpdated": "2026-11-02T16:25:12.650Z"
+}

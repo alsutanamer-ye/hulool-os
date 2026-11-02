@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hulool OS - Setup Wizard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', sans-serif; }
+    .fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .provider-card { transition: all 0.3s ease; }
+    .provider-card:hover { transform: translateY(-5px); }
+    .provider-card.selected { ring: 2px; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 min-h-screen text-white">
+  
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    
+    <!-- Header -->
+    <div class="text-center mb-12 fade-in">
+      <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        🤖 Hulool OS
+      </h1>
+      <p class="text-xl text-gray-300">معالج الإعداد الأولي</p>
+      <div class="mt-4 flex justify-center gap-2">
+        <div id="step-1-dot" class="w-3 h-3 rounded-full bg-blue-500"></div>
+        <div id="step-2-dot" class="w-3 h-3 rounded-full bg-gray-600"></div>
+        <div id="step-3-dot" class="w-3 h-3 rounded-full bg-gray-600"></div>
+        <div id="step-4-dot" class="w-3 h-3 rounded-full bg-gray-600"></div>
+      </div>
+    </div>
+
+    <!-- Step 1: Welcome -->
+    <div id="step-1" class="fade-in">
+      <div class="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700">
+        <h2 class="text-3xl font-bold mb-6 text-center">مرحباً بك في Hulool OS! 👋</h2>
+        <p class="text-lg text-gray-300 mb-8 text-center">
+          دعنا نعد نظامك في خطوات بسيطة. سنساعدك على اختيار مزود الذكاء الاصطناعي المفضل لديك.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-gray-700/50 rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">⚡</div>
+            <div class="font-semibold">سريع</div>
+            <div class="text-sm text-gray-400">دقيقتان فقط</div>
+          </div>
+          <div class="bg-gray-700/50 rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">🔒</div>
+            <div class="font-semibold">آمن</div>
+            <div class="text-sm text-gray-400">محلي بالكامل</div>
+          </div>
+          <div class="bg-gray-700/50 rounded-lg p-4 text-center">
+            <div class="text-3xl mb-2">🎯</div>
+            <div class="font-semibold">سهل</div>
+            <div class="text-sm text-gray-400">بسيط وواضح</div>
+          </div>
+        </div>
+
+        <button onclick="nextStep(1)" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-lg transition-all">
+          ابدأ الإعداد ←
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Choose Provider -->
+    <div id="step-2" class="hidden fade-in">
+      <div class="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700">
+        <h2 class="text-3xl font-bold mb-6 text-center">اختر مزود الذكاء الاصطناعي 🎯</h2>
+        <p class="text-gray-300 mb-8 text-center">اختر المزود الذي تريد استخدامه</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" id="providers-grid">
+          
+          <div onclick="selectProvider('openai')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-green-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🟢</div>
+              <div>
+                <div class="font-bold text-lg">OpenAI</div>
+                <div class="text-sm text-gray-400">GPT-4, GPT-3.5</div>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="selectProvider('anthropic')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-orange-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🟠</div>
+              <div>
+                <div class="font-bold text-lg">Anthropic</div>
+                <div class="text-sm text-gray-400">Claude 3</div>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="selectProvider('gemini')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-blue-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🔵</div>
+              <div>
+                <div class="font-bold text-lg">Google Gemini</div>
+                <div class="text-sm text-gray-400">Gemini Pro</div>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="selectProvider('qwen')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-purple-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🟣</div>
+              <div>
+                <div class="font-bold text-lg">Qwen</div>
+                <div class="text-sm text-gray-400">Alibaba Cloud</div>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="selectProvider('openrouter')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-cyan-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🌐</div>
+              <div>
+                <div class="font-bold text-lg">OpenRouter</div>
+                <div class="text-sm text-gray-400">جميع النماذج</div>
+              </div>
+            </div>
+          </div>
+
+          <div onclick="selectProvider('ollama')" class="provider-card bg-gray-700/50 hover:bg-gray-700 rounded-lg p-6 cursor-pointer border-2 border-transparent hover:border-gray-500">
+            <div class="flex items-center gap-4">
+              <div class="text-4xl">🏠</div>
+              <div>
+                <div class="font-bold text-lg">Ollama</div>
+                <div class="text-sm text-gray-400">محلي بدون API</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex gap-4">
+          <button onclick="prevStep(2)" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            → السابق
+          </button>
+          <button onclick="nextStep(2)" id="step-2-next" class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all opacity-50 cursor-not-allowed" disabled>
+            التالي ←
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: API Key & Model -->
+    <div id="step-3" class="hidden fade-in">
+      <div class="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700">
+        <h2 class="text-3xl font-bold mb-6 text-center">إعداد <span id="provider-name">المزود</span> 🔑</h2>
+        
+        <!-- API Key Input -->
+        <div id="api-key-section" class="mb-6">
+          <label class="block text-lg font-semibold mb-3">مفتاح API</label>
+          <div class="mb-2">
+            <a id="get-key-link" href="#" target="_blank" class="text-blue-400 hover:text-blue-300 text-sm">
+              📝 احصل على مفتاح API من هنا
+            </a>
+          </div>
+          <input 
+            type="password" 
+            id="api-key-input" 
+            placeholder="sk-..." 
+            class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+          >
+          <button onclick="testConnection()" id="test-btn" class="mt-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all">
+            🧪 اختبار الاتصال
+          </button>
+          <div id="test-result" class="mt-2 text-sm"></div>
+        </div>
+
+        <!-- Model Selection -->
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-3">النموذج الافتراضي</label>
+          <select id="model-select" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500">
+          </select>
+        </div>
+
+        <div class="flex gap-4">
+          <button onclick="prevStep(3)" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            → السابق
+          </button>
+          <button onclick="nextStep(3)" id="step-3-next" class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            التالي ←
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Complete -->
+    <div id="step-4" class="hidden fade-in">
+      <div class="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700 text-center">
+        <div class="text-6xl mb-4">🎉</div>
+        <h2 class="text-3xl font-bold mb-4">تم الإعداد بنجاح!</h2>
+        <p class="text-lg text-gray-300 mb-8">Hulool OS جاهز للاستخدام الآن</p>
+
+        <div class="bg-gray-700/50 rounded-lg p-6 mb-8 text-right">
+          <h3 class="font-bold text-lg mb-4">📋 ملخص الإعداد:</h3>
+          <div class="space-y-2">
+            <div class="flex justify-between">
+              <span class="text-gray-400">المزود:</span>
+              <span id="summary-provider" class="font-semibold"></span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">النموذج:</span>
+              <span id="summary-model" class="font-semibold"></span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-400">الحالة:</span>
+              <span class="text-green-400 font-semibold">✓ جاهز</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <button onclick="openDashboard()" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-6 rounded-lg transition-all">
+            🚀 ابدأ الاستخدام
+          </button>
+          <button onclick="window.close()" class="w-full bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all">
+            إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let selectedProvider = null;
+    let selectedModel = null;
+    let apiKey = '';
+
+    const providerData = {
+      openai: {
+        name: 'OpenAI',
+        getUrl: 'https://platform.openai.com/api-keys',
+        models: ['gpt-4', 'gpt-4-turbo-preview', 'gpt-3.5-turbo']
+      },
+      anthropic: {
+        name: 'Anthropic',
+        getUrl: 'https://console.anthropic.com/settings/keys',
+        models: ['claude-3-opus-20240229', 'claude-3-sonnet-20240229', 'claude-3-haiku-20240307']
+      },
+      gemini: {
+        name: 'Google Gemini',
+        getUrl: 'https://makersuite.google.com/app/apikey',
+        models: ['gemini-pro', 'gemini-pro-vision']
+      },
+      qwen: {
+        name: 'Qwen',
+        getUrl: 'https://dashscope.console.aliyun.com/apiKey',
+        models: ['qwen-max', 'qwen-plus', 'qwen-turbo']
+      },
+      openrouter: {
+        name: 'OpenRouter',
+        getUrl: 'https://openrouter.ai/keys',
+        models: ['openai/gpt-4', 'anthropic/claude-3-opus', 'google/gemini-pro']
+      },
+      ollama: {
+        name: 'Ollama',
+        getUrl: '',
+        models: ['llama2', 'codellama', 'mistral']
+      }
+    };
+
+    function selectProvider(provider) {
+      selectedProvider = provider;
+      
+      // تحديث الواجهة
+      document.querySelectorAll('.provider-card').forEach(card => {
+        card.classList.remove('border-blue-500', 'bg-blue-900/30');
+        card.classList.add('border-transparent');
+      });
+      
+      event.currentTarget.classList.remove('border-transparent');
+      event.currentTarget.classList.add('border-blue-500', 'bg-blue-900/30');
+
+      // تفعيل زر التالي
+      const nextBtn = document.getElementById('step-2-next');
+      nextBtn.disabled = false;
+      nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+
+    function nextStep(current) {
+      document.getElementById(`step-${current}`).classList.add('hidden');
+      document.getElementById(`step-${current + 1}`).classList.remove('hidden');
+      
+      // تحديث النقاط
+      document.getElementById(`step-${current}-dot`).classList.remove('bg-blue-500');
+      document.getElementById(`step-${current}-dot`).classList.add('bg-green-500');
+      document.getElementById(`step-${current + 1}-dot`).classList.remove('bg-gray-600');
+      document.getElementById(`step-${current + 1}-dot`).classList.add('bg-blue-500');
+
+      // إعداد الخطوة التالية
+      if (current === 2) {
+        setupStep3();
+      } else if (current === 3) {
+        saveConfiguration();
+      }
+    }
+
+    function prevStep(current) {
+      document.getElementById(`step-${current}`).classList.add('hidden');
+      document.getElementById(`step-${current - 1}`).classList.remove('hidden');
+      
+      // تحديث النقاط
+      document.getElementById(`step-${current}-dot`).classList.remove('bg-blue-500');
+      document.getElementById(`step-${current}-dot`).classList.add('bg-gray-600');
+      document.getElementById(`step-${current - 1}-dot`).classList.remove('bg-green-500');
+      document.getElementById(`step-${current - 1}-dot`).classList.add('bg-blue-500');
+    }
+
+    function setupStep3() {
+      const provider = providerData[selectedProvider];
+      document.getElementById('provider-name').textContent = provider.name;
+      
+      // تحديث رابط الحصول على المفتاح
+      if (provider.getUrl) {
+        document.getElementById('get-key-link').href = provider.getUrl;
+        document.getElementById('api-key-section').style.display = 'block';
+      } else {
+        document.getElementById('api-key-section').style.display = 'none';
+      }
+
+      // تحديث قائمة النماذج
+      const modelSelect = document.getElementById('model-select');
+      modelSelect.innerHTML = provider.models.map(m => `<option value="${m}">${m}</option>`).join('');
+      selectedModel = provider.models[0];
+    }
+
+    async function testConnection() {
+      apiKey = document.getElementById('api-key-input').value;
+      const testBtn = document.getElementById('test-btn');
+      const testResult = document.getElementById('test-result');
+
+      if (!apiKey) {
+        testResult.innerHTML = '<span class="text-red-400">❌ يرجى إدخال مفتاح API</span>';
+        return;
+      }
+
+      testBtn.disabled = true;
+      testBtn.textContent = '⏳ جاري الاختبار...';
+      testResult.innerHTML = '';
+
+      try {
+        const response = await fetch('/api/test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ provider: selectedProvider, apiKey })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          testResult.innerHTML = '<span class="text-green-400">✅ ' + result.message + '</span>';
+        } else {
+          testResult.innerHTML = '<span class="text-red-400">❌ ' + result.message + '</span>';
+        }
+      } catch (error) {
+        testResult.innerHTML = '<span class="text-red-400">❌ خطأ في الاتصال</span>';
+      }
+
+      testBtn.disabled = false;
+      testBtn.textContent = '🧪 اختبار الاتصال';
+    }
+
+    async function saveConfiguration() {
+      apiKey = document.getElementById('api-key-input')?.value || '';
+      selectedModel = document.getElementById('model-select').value;
+
+      try {
+        const response = await fetch('/api/configure', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            provider: selectedProvider,
+            apiKey: apiKey,
+            model: selectedModel
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // تحديث الملخص
+          document.getElementById('summary-provider').textContent = providerData[selectedProvider].name;
+          document.getElementById('summary-model').textContent = selectedModel;
+        }
+      } catch (error) {
+        console.error('Failed to save configuration:', error);
+      }
+    }
+
+    function openDashboard() {
+      window.location.href = '/dashboard';
+    }
+
+    // التحقق من الحالة عند التحميل
+    async function checkStatus() {
+      try {
+        const response = await fetch('/api/status');
+        const status = await response.json();
+
+        if (status.configured) {
+          // إذا كان معداً مسبقاً، انتقل مباشرة للخطوة الأخيرة
+          document.getElementById('step-1').classList.add('hidden');
+          document.getElementById('step-4').classList.remove('hidden');
+          document.getElementById('summary-provider').textContent = providerData[status.defaultProvider]?.name || status.defaultProvider;
+          document.getElementById('summary-model').textContent = status.defaultModel;
+        }
+      } catch (error) {
+        console.error('Failed to check status:', error);
+      }
+    }
+
+    // بدء التحقق
+    checkStatus();
+  </script>
+
+</body>
+</html>

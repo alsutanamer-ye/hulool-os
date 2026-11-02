@@ -1,0 +1,17 @@
+{
+  "id": "test-agent",
+  "name": "Test Agent",
+  "role": "researcher",
+  "model": "gpt-4",
+  "systemPrompt": "You are an expert research analyst. Your job is to gather, analyze, and synthesize information from various sources. You provide detailed, well-sourced reports with clear insights. Always cite your sources and highlight key findings.",
+  "budget": {
+    "monthly": 100,
+    "used": 0
+  },
+  "status": "inactive",
+  "skills": [],
+  "tools": [],
+  "maxConcurrentTasks": 2,
+  "createdAt": "2026-11-02T16:17:12.966Z",
+  "updatedAt": "2026-11-02T16:28:35.928Z"
+}

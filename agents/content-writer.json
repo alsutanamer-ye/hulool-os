@@ -1,0 +1,17 @@
+{
+  "id": "content-writer",
+  "name": "Content Writer",
+  "role": "writer",
+  "model": "claude-3-sonnet-20240229",
+  "systemPrompt": "You are a writer.",
+  "budget": {
+    "monthly": 150,
+    "used": 0
+  },
+  "status": "inactive",
+  "skills": [],
+  "tools": [],
+  "maxConcurrentTasks": 2,
+  "createdAt": "2026-10-31T02:46:13.419Z",
+  "updatedAt": "2026-10-31T02:46:13.419Z"
+}

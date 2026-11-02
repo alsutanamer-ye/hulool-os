@@ -1,0 +1,22 @@
+{
+  "name": "my-first-company",
+  "version": "1.0.0",
+  "description": "AI-powered company built with Hulool OS",
+  "type": "module",
+  "scripts": {
+    "start": "hulool start",
+    "dev": "hulool start --watch",
+    "agent:create": "hulool agent create",
+    "agent:list": "hulool agent list"
+  },
+  "keywords": [
+    "hulool",
+    "ai",
+    "agents"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^12.0.0"
+  }
+}

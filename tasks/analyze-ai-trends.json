@@ -1,0 +1,11 @@
+{
+  "id": "analyze-ai-trends",
+  "agentId": "researcher",
+  "description": "Analyze AI trends",
+  "status": "pending",
+  "priority": "high",
+  "tokensUsed": 0,
+  "cost": 0,
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "updatedAt": "2026-01-01T00:00:00.000Z"
+}
