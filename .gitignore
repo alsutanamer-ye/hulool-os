@@ -1,13 +1,92 @@
+# ========================================
+# Dependencies & Build
+# ========================================
 node_modules/
 dist/
+build/
+.next/
+*.tsbuildinfo
+
+# ========================================
+# Environment & Secrets (CRITICAL)
+# ========================================
 .env
 .env.local
+.env.*.local
+.hulool/vault.json
+.hulool/vault.key
+*.pem
+*.key
+secrets.json
+
+# ========================================
+# Local Data (User-specific)
+# ========================================
+.hulool/agents/
+.hulool/tasks/
+.hulool/workflows/
+.hulool/workflow-runs/
+.hulool/schedules/
+.hulool/schedule-runs/
+.hulool/notifications/
+.hulool/messages/
+.hulool/reports/
+.hulool/integrations.json
+.hulool/mcp-installed.json
+.hulool/notification-channels.json
+.hulool/installed-plugins/
+
+# ========================================
+# IDE & OS Files
+# ========================================
 .vscode/
 .idea/
 *.swp
+*.swo
+*~
 .DS_Store
+Thumbs.db
+
+# ========================================
+# Logs & Debug
+# ========================================
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ========================================
+# Test Coverage
+# ========================================
+coverage/
+.nyc_output/
+
+# ========================================
+# Temporary Files
+# ========================================
+tmp/
+temp/
+*.tmp
+.cache/
+
+# ========================================
+# Database (Local)
+# ========================================
 *.db
 *.sqlite
-logs/
-coverage/
-.supabase/
+*.sqlite3
+drizzle/meta/
+
+# ========================================
+# Plugin Development (Local)
+# ========================================
+com.hulool.*/
+com.*.*/
+
+# ========================================
+# Keep these (tracked)
+# ========================================
+!.hulool/.gitkeep
+!.env.example

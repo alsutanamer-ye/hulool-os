@@ -1,3 +1,4 @@
 {
-  "TEST_API_KEY": "{\"iv\":\"3d70060e11fc491e83a7c9bd4070b942\",\"encryptedData\":\"3e45a12952a22e33796e\",\"authTag\":\"6cec1cf4d859ab072009290e6f4b0bf0\"}"
+  "TEST_API_KEY": "{\"iv\":\"3d70060e11fc491e83a7c9bd4070b942\",\"encryptedData\":\"3e45a12952a22e33796e\",\"authTag\":\"6cec1cf4d859ab072009290e6f4b0bf0\"}",
+  "slack_SLACK_BOT_TOKEN": "{\"iv\":\"9007b19c6c649d6598851c0b7204ce3b\",\"encryptedData\":\"38\",\"authTag\":\"dc9be73020c3528c7bd231a9cf0085fc\"}"
 }

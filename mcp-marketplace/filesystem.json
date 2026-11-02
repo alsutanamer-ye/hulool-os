@@ -1,0 +1,11 @@
+{
+  "id": "filesystem",
+  "name": "File System",
+  "description": "Allows agents to read, write, and manage local files and directories securely.",
+  "category": "filesystem",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-filesystem", "/root/projects/hulool-os/my-first-company"],
+  "envVars": [],
+  "website": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "version": "1.0.0"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "web-search",
+  "name": "Web Search",
+  "description": "Allows agents to search the internet for real-time information using Brave Search or DuckDuckGo.",
+  "category": "search",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+  "envVars": ["BRAVE_API_KEY"],
+  "website": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search",
+  "version": "1.0.0"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "sqlite-db",
+  "name": "SQLite Database",
+  "description": "Allows agents to query and manage local SQLite databases.",
+  "category": "database",
+  "command": "uvx",
+  "args": ["mcp-server-sqlite", "--db-path", "./data.db"],
+  "envVars": [],
+  "website": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite",
+  "version": "1.0.0"
+}
